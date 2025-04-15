@@ -1,20 +1,9 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  Link,
-  Stack,
-  TextField,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Grid, useTheme } from "@mui/material";
 import { useState } from "react";
 import homeImage from "../../../assets/images/house-7497001.svg";
 import { supabase } from "../../../utils/config/supabase";
 import { useAlert } from "../../../utils/context/AlertProvider";
 import FloatingModeChangeBtn from "../../shared/FloatingModeChangeBtn";
-import SocialLoginBtn from "./SocialLoginBtn";
 import SignInFormCard from "./SignInFormCard";
 
 // email: "user.gobookings5@gmail.com",
