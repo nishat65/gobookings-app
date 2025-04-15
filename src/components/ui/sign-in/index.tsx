@@ -1,8 +1,5 @@
-import { Box, Grid, useTheme } from "@mui/material";
-import { useState } from "react";
+import { Box, Grid } from "@mui/material";
 import homeImage from "../../../assets/images/house-7497001.svg";
-import { supabase } from "../../../utils/config/supabase";
-import { useAlert } from "../../../utils/context/AlertProvider";
 import FloatingModeChangeBtn from "../../shared/FloatingModeChangeBtn";
 import SignInFormCard from "./SignInFormCard";
 
@@ -10,34 +7,6 @@ import SignInFormCard from "./SignInFormCard";
 //         password: "nishat@65",
 
 export default function SignIn() {
-  const theme = useTheme();
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const alert = useAlert();
-
-  async function onSubmit() {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) {
-        alert.error(error.code as string);
-        return;
-      }
-      if (data) {
-        console.log("Sign in successful:", data);
-        alert.success("Sign in successful");
-      }
-    } catch (error) {
-      console.error("Error signing in:", error);
-      alert.error("Error signing in. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  }
   return (
     <Box
       component={"main"}
