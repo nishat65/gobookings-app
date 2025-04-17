@@ -1,7 +1,11 @@
 import { CssBaseline } from "@mui/material";
-import GoBookingThemeProvider from "./utils/context/ThemeProvider";
-import SignIn from "./pages/sign-in";
+import { Suspense } from "react";
+import { RouterProvider } from "react-router";
+import router from "./routes";
 import { AlertProvider } from "./utils/context/AlertProvider";
+import GoBookingThemeProvider from "./utils/context/ThemeProvider";
+import PageFallbackSpinner from "./components/shared/PageFallbackSpinner";
+import FloatingModeChangeBtn from "./components/shared/FloatingModeChangeBtn";
 
 // console.log(import.meta.env.REACT_APP_DB_PASSWORD);
 function App() {
@@ -9,7 +13,10 @@ function App() {
     <GoBookingThemeProvider>
       <CssBaseline />
       <AlertProvider>
-        <SignIn />
+        <Suspense fallback={<PageFallbackSpinner />}>
+          <RouterProvider router={router} />
+        </Suspense>
+        <FloatingModeChangeBtn />
       </AlertProvider>
     </GoBookingThemeProvider>
   );

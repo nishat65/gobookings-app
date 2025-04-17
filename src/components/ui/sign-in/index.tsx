@@ -1,6 +1,5 @@
 import { Box, Grid } from "@mui/material";
 import homeImage from "../../../assets/images/house-7497001.svg";
-import FloatingModeChangeBtn from "../../shared/FloatingModeChangeBtn";
 import SignInFormCard from "./SignInFormCard";
 
 // email: "user.gobookings5@gmail.com",
@@ -30,7 +29,6 @@ export default function SignIn() {
           <SignInFormCard />
         </Grid>
       </Grid>
-      <FloatingModeChangeBtn />
     </Box>
   );
 }
