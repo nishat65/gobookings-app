@@ -1,24 +1,27 @@
-import { CssBaseline } from "@mui/material";
-import { Suspense } from "react";
-import { RouterProvider } from "react-router";
-import router from "./routes";
-import { AlertProvider } from "./utils/context/AlertProvider";
-import GoBookingThemeProvider from "./utils/context/ThemeProvider";
-import PageFallbackSpinner from "./components/shared/PageFallbackSpinner";
-import FloatingModeChangeBtn from "./components/shared/FloatingModeChangeBtn";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import type { Navigation } from "@toolpad/core";
+import { ReactRouterAppProvider } from "@toolpad/core/react-router";
+import { Outlet } from "react-router";
+import Logo from "./assets/images/house-2492054.svg";
+
+const NAVIGATION: Navigation = [
+  {
+    title: "Home",
+    icon: <DashboardIcon />,
+  },
+];
+
+const BRANDING = {
+  title: "",
+  logo: <img src={Logo} alt="gobookings icon" />,
+};
 
 // console.log(import.meta.env.REACT_APP_DB_PASSWORD);
 function App() {
   return (
-    <GoBookingThemeProvider>
-      <CssBaseline />
-      <AlertProvider>
-        <Suspense fallback={<PageFallbackSpinner />}>
-          <RouterProvider router={router} />
-        </Suspense>
-        <FloatingModeChangeBtn />
-      </AlertProvider>
-    </GoBookingThemeProvider>
+    <ReactRouterAppProvider navigation={NAVIGATION} branding={BRANDING}>
+      <Outlet />
+    </ReactRouterAppProvider>
   );
 }
 

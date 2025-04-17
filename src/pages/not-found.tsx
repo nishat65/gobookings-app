@@ -6,7 +6,7 @@ import notFound from "../assets/images/404/6325254.jpg";
 export default function NotFound() {
   const navigate = useNavigate();
   const handleBack = () => {
-    navigate("/sign-in");
+    navigate("/");
   };
   return (
     <Box
